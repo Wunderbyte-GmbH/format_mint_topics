@@ -1,0 +1,106 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template core_courseformat/local/content/section/cmlist
+
+    Displays the course module list inside a course section.
+
+    Example context (json):
+    {
+        "cms": [
+            {
+                "cmitem": {
+                    "cmformat": {
+                        "cmname": "<a class=\"aalink\" href=\"#\"><span class=\"instancename\">Forum example</span></a>",
+                        "hasname": "true"
+                    },
+                    "id": 3,
+                    "module": "forum",
+                    "extraclasses": "newmessages"
+                }
+            },
+            {
+                "cmitem": {
+                    "cmformat": {
+                        "cmname": "<a class=\"aalink\" href=\"#\"><span class=\"instancename\">Assign example</span></a>",
+                        "hasname": "true"
+                    },
+                    "id": 4,
+                    "module": "assign",
+                    "extraclasses": ""
+                }
+            }
+        ],
+        "hascms": true,
+        "showmovehere": true,
+        "movingstr": "Moving this activity: folder example",
+        "cancelcopyurl": "#",
+        "movetosectionurl": "#",
+        "strmovefull": "Move 'folder example' to this location"
+    }
+}}
+{{#showmovehere}}
+    <p>{{movingstr}} (<a href="{{{cancelcopyurl}}}">{{#str}} cancel {{/str}}</a>)</p>
+{{/showmovehere}}
+<ul class="section m-0 p-0 img-text text-primary {{#hascms}} d-block {{/hascms}}" data-for="cmlist">
+    {{#cms}}
+        {{#showmovehere}}
+            <li class="movehere">
+                <a href="{{{moveurl}}}" title="{{strmovefull}}" class="movehere"></a>
+            </li>
+        {{/showmovehere}}
+            {{#hascontainer}}
+                <div class="accordion-container" id="{{accordionid}}">
+                <div class="accordion-card">
+                    <div class="accordion-header" id="{{cardheaderid}}">
+                        <h2 class="mb-0">
+                            <button class="btn-header btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#{{collapsecontainerid}}" aria-expanded="false" aria-controls="{{collapsecontainerid}}">
+                                {{text}}
+                            </button>
+                        </h2>
+                    </div>
+                <div class="collapse-container">
+                {{#cmcontainter}}
+                    {{#cmitem}}
+                        <div id="{{collapsecontainerid}}" class="collapse collapse-activity" aria-labelledby="{{cardheaderid}}" data-parent="#{{accordionid}}">
+                            <div>
+                                {{$ format_mint_topics/local/content/section/cmitem}}
+                                    {{> format_mint_topics/local/content/section/cmitem}}
+                                {{/ format_mint_topics/local/content/section/cmitem}}
+                            </div>
+                        </div>
+                    {{/cmitem}}
+                {{/cmcontainter}}
+                </div>
+                </div>
+                </div>
+            {{/hascontainer}}
+            {{^hascontainer}}
+                {{#cmitem}}
+                {{$ format_mint_topics/local/content/section/cmitem}}
+                    {{> format_mint_topics/local/content/section/cmitem}}
+                {{/ format_mint_topics/local/content/section/cmitem}}
+                {{/cmitem}}
+            {{/hascontainer}}
+
+    {{/cms}}
+    {{#showmovehere}}
+        <li class="movehere">
+            <a href="{{{movetosectionurl}}}" title="{{strmovefull}}" class="movehere"></a>
+        </li>
+    {{/showmovehere}}
+</ul>
