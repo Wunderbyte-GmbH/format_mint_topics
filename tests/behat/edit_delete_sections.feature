@@ -1,4 +1,4 @@
-@format @format_topics
+@format @format_mint_topics
 Feature: Sections can be edited and deleted in topics format
   In order to rearrange my course contents
   As a teacher

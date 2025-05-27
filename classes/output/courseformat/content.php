@@ -17,7 +17,7 @@
 /**
  * Contains the default content output class.
  *
- * @package   format_topics
+ * @package   format_mint_topics
  * @copyright 2020 Ferran Recio <ferran@moodle.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -33,7 +33,7 @@ require_once($CFG->dirroot . '/course/format/mint_topics/locallib.php');
 /**
  * Base class to render a course content.
  *
- * @package   format_topics
+ * @package   format_mint_topics
  * @copyright 2020 Ferran Recio <ferran@moodle.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -79,7 +79,7 @@ class content extends content_base {
         ];
 
         // The single section format has extra navigation.
-        $singlesection = $this->format->get_section_number();
+        $singlesection = $this->format->get_sectionnum();
         if ($singlesection) {
             if (!$PAGE->theme->usescourseindex) {
                 $sectionnavigation = new $this->sectionnavigationclass($format, $singlesection);

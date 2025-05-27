@@ -14,44 +14,42 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Contains the default section controls output class.
- *
- * @package   format_mint_topics
- * @copyright 2020 Ferran Recio <ferran@moodle.com>
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
-namespace format_mint_topics\output\courseformat\content;
-
-use core_courseformat\base as course_format;
-use core_courseformat\output\local\content\section as section_base;
+namespace format_mint_topics\output\courseformat\state;
 use stdClass;
+use core_availability\info_module;
+use completion_info;
 
 /**
  * Base class to render a course section.
  *
- * @package   format_mint_topics
- * @copyright 2020 Ferran Recio <ferran@moodle.com>
+ * @package   format_designer
+ * @copyright 2021 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class section extends section_base {
+class cm extends \core_courseformat\output\local\state\cm {
 
-    /** @var course_format the course format */
-    protected $format;
-
+    /**
+     * Export this data so it can be used as state object in the course editor.
+     *
+     * @param renderer_base $output typically, the renderer that's calling this function
+     * @return stdClass data context for a mustache template
+     */
     public function export_for_template(\renderer_base $output): stdClass {
-        $format = $this->format;
+        global $USER, $CFG;
 
+        $format = $this->format;
+        $course = $format->get_course();
+        $format = $this->format;
+        $cm = $this->cm;
         $data = parent::export_for_template($output);
 
-        if (!$this->format->get_sectionnum()) {
-            $addsectionclass = $format->get_output_classname('content\\addsection');
-            $addsection = new $addsectionclass($format);
-            $data->numsections = $addsection->export_for_template($output);
-            $data->insertafter = true;
+        // Completion status.
+        $completioninfo = new completion_info($course);
+        if ($data->istrackeduser && $completioninfo->is_enabled($cm)) {
+            $completiondata = $completioninfo->get_data($cm);
+            $data->completionstate = $completiondata->completionstate;
         }
-
         return $data;
     }
+
 }

@@ -18,7 +18,7 @@
  * This file contains main class for Topics course format.
  *
  * @since     Moodle 2.0
- * @package   format_topics
+ * @package   format_mint_topics
  * @copyright 2009 Sam Hemelryk
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,7 +31,7 @@ use core\output\inplace_editable;
 /**
  * Main class for the Topics course format.
  *
- * @package    format_topics
+ * @package    format_mint_topics
  * @copyright  2012 Marina Glancy
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -51,7 +51,7 @@ class format_mint_topics extends core_courseformat\base {
     }
 
     public function uses_indentation(): bool {
-        return (get_config('format_topics', 'indentation')) ? true : false;
+        return (get_config('format_mint_topics', 'indentation')) ? true : false;
     }
 
     /**
@@ -85,7 +85,7 @@ class format_mint_topics extends core_courseformat\base {
     public function get_default_section_name($section) {
         if ($section->section == 0) {
             // Return the general section.
-            return get_string('section0name', 'format_topics');
+            return get_string('section0name', 'format_mint_topics');
         } else {
             // Use course_format::get_default_section_name implementation which
             // will display the section name in "Topic n" format.
@@ -99,7 +99,7 @@ class format_mint_topics extends core_courseformat\base {
      * @return string the page title
      */
     public function page_title(): string {
-        return get_string('topicoutline');
+        return get_string('sectionoutline');
     }
 
     /**
@@ -376,11 +376,11 @@ class format_mint_topics extends core_courseformat\base {
     public function inplace_editable_render_section_name($section, $linkifneeded = true,
             $editable = null, $edithint = null, $editlabel = null) {
         if (empty($edithint)) {
-            $edithint = new lang_string('editsectionname', 'format_topics');
+            $edithint = new lang_string('editsectionname', 'format_mint_topics');
         }
         if (empty($editlabel)) {
             $title = get_section_name($section->course, $section);
-            $editlabel = new lang_string('newsectionname', 'format_topics', $title);
+            $editlabel = new lang_string('newsectionname', 'format_mint_topics', $title);
         }
         return parent::inplace_editable_render_section_name($section, $linkifneeded, $editable, $edithint, $editlabel);
     }
@@ -432,7 +432,7 @@ class format_mint_topics extends core_courseformat\base {
 
         // For show/hide actions call the parent method and return the new content for .section_availability element.
         $rv = parent::section_action($section, $action, $sr);
-        $renderer = $PAGE->get_renderer('format_topics');
+        $renderer = $PAGE->get_renderer('format_mint_topics');
 
         if (!($section instanceof section_info)) {
             $modinfo = course_modinfo::instance($this->courseid);
@@ -454,7 +454,7 @@ class format_mint_topics extends core_courseformat\base {
     public function get_config_for_external() {
         // Return everything (nothing to hide).
         $formatoptions = $this->get_format_options();
-        $formatoptions['indentation'] = get_config('format_topics', 'indentation');
+        $formatoptions['indentation'] = get_config('format_mint_topics', 'indentation');
         return $formatoptions;
     }
 }

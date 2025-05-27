@@ -17,12 +17,12 @@
 /**
  * Privacy Subsystem implementation for Topics course format.
  *
- * @package    format_topics
+ * @package    format_mint_topics
  * @copyright  2018 Carlos Escobedo <carlos@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace format_topics\privacy;
+namespace format_mint_topics\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 

@@ -17,7 +17,7 @@
 /**
  * Specialised restore for Topics course format.
  *
- * @package   format_topics
+ * @package   format_mint_topics
  * @category  backup
  * @copyright 2017 Marina Glancy
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
  *
  * Processes 'numsections' from the old backup files and hides sections that used to be "orphaned".
  *
- * @package   format_topics
+ * @package   format_mint_topics
  * @category  backup
  * @copyright 2017 Marina Glancy
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

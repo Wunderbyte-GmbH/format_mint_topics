@@ -17,7 +17,7 @@
 /**
  * Contains the default section controls output class.
  *
- * @package   format_topics
+ * @package   format_mint_topics
  * @copyright 2020 Ferran Recio <ferran@moodle.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,7 +30,7 @@ use core_courseformat\output\local\content\section\controlmenu as controlmenu_ba
 /**
  * Base class to render a course section menu.
  *
- * @package   format_topics
+ * @package   format_mint_topics
  * @copyright 2020 Ferran Recio <ferran@moodle.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -54,7 +54,7 @@ class controlmenu extends controlmenu_base {
         $format = $this->format;
         $section = $this->section;
         $course = $format->get_course();
-        $sectionreturn = $format->get_section_number();
+        $sectionreturn = $format->get_sectionnum();
 
         $coursecontext = context_course::instance($course->id);
 

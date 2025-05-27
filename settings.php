@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Settings for format_topics
+ * Settings for format_mint_topics
  *
- * @package    format_topics
+ * @package    format_mint_topics
  * @copyright  2020 Amaia Anabitarte <amaia@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,9 +28,9 @@ if ($ADMIN->fulltree) {
     $url = new moodle_url('/admin/course/resetindentation.php', ['format' => 'topics']);
     $link = html_writer::link($url, get_string('resetindentation', 'admin'));
     $settings->add(new admin_setting_configcheckbox(
-        'format_topics/indentation',
-        new lang_string('indentation', 'format_topics'),
-        new lang_string('indentation_help', 'format_topics').'<br />'.$link,
+        'format_mint_topics/indentation',
+        new lang_string('indentation', 'format_mint_topics'),
+        new lang_string('indentation_help', 'format_mint_topics').'<br />'.$link,
         1
     ));
 }

@@ -17,13 +17,13 @@
 /**
  * Version details.
  *
- * @package    format_topics
+ * @package    format_mint_topics
  * @copyright  1999 onwards Martin Dougiamas (http://dougiamas.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2022112802;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2022112805;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2022111800;        // Requires this Moodle version.
 $plugin->component = 'format_mint_topics';    // Full name of the plugin (used for diagnostics).

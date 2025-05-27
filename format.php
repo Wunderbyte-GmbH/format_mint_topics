@@ -17,7 +17,7 @@
 /**
  * Topics course format. Display the whole course as "topics" made of modules.
  *
- * @package format_topics
+ * @package format_mint_topics
  * @copyright 2006 The Open University
  * @author N.D.Freear@open.ac.uk, and others.
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,8 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->libdir.'/filelib.php');
-require_once($CFG->libdir.'/completionlib.php');
+require_once($CFG->libdir . '/filelib.php');
+require_once($CFG->libdir . '/completionlib.php');
 
 // Retrieve course format option fields and add them to the $course object.
 $format = course_get_format($course);
@@ -44,11 +44,11 @@ course_create_sections_if_missing($course, 0);
 $renderer = $PAGE->get_renderer('format_mint_topics');
 
 if (!empty($displaysection)) {
-    $format->set_section_number($displaysection);
+    $format->set_sectionnum($displaysection);
 }
 $outputclass = $format->get_output_classname('content');
 $widget = new $outputclass($format);
 echo $renderer->render($widget);
 
 // Include course format js module.
-$PAGE->requires->js('/course/format/topics/format.js');
+$PAGE->requires->js('/course/format/mint_topics/format.js');
